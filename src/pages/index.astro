@@ -1,0 +1,166 @@
+---
+const projects = {
+  "early learning": [
+    {
+      name: "FullStack",
+      url: "https://github.com/Adjanour/FullStack",
+      description: "One of my first projects. Built with friends while figuring out how programming works.",
+    },
+    {
+      name: "python-2025",
+      url: "https://github.com/Adjanour/python-2025",
+      description: "Small experiments around probability and simulation. Nothing serious, just poking at ideas.",
+    },
+    {
+      name: "dsa-boot",
+      url: "https://github.com/Adjanour/dsa-boot",
+      description: "Data structures and algorithms practice. The stuff you do to get better at the fundamentals.",
+    },
+  ],
+  "application building": [
+    {
+      name: "django-project",
+      url: "https://github.com/Adjanour/django-project",
+      description: "Transcript management system built with Django. A real problem, a straightforward solution.",
+    },
+    {
+      name: "bank-x",
+      url: "https://github.com/Adjanour/bank-x",
+      description: "My first Django API. Learned a lot about structuring backend code here.",
+    },
+    {
+      name: "ask-me-api",
+      url: "https://github.com/Adjanour/ask-me-api",
+      description: "FAQ-style medical chatbot API. The kind of project that teaches you where your assumptions break.",
+    },
+  ],
+  research: [
+    {
+      name: "ae-net",
+      url: "https://github.com/Adjanour/ae-net",
+      description: "Autoencoder-based approach for SQL injection attack detection. Exploring where ML fits into security.",
+    },
+    {
+      name: "final year project",
+      url: null,
+      description:
+        "Knowledge graph–constrained decoding. Exploring how structured representations can improve reasoning and reduce hallucination in language models. Still in progress.",
+    },
+  ],
+  "open source": [
+    {
+      name: "easechaos",
+      url: "https://github.com/EaseCHAOS/easechaos",
+      description:
+        "I maintain this. We built a tool that extracts exams and class timetables at UMaT. People actually use it.",
+    },
+  ],
+  "production systems": [
+    {
+      name: "Orcta Technologies",
+      url: null,
+      description:
+        "Python runs parts of the backend services in a last-mile delivery system we're building. Real traffic, real constraints.",
+    },
+  ],
+};
+
+const links = [
+  { label: "adjarnor.dev", url: "https://adjarnor.dev" },
+  { label: "studio.adjarnor.dev", url: "https://studio.adjarnor.dev" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>adjarnor — python engineer</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+        color: #1a1a1a;
+        background: #fff;
+      }
+      h1 { font-size: 16px; margin-bottom: 0.25rem; }
+      h2 {
+        font-size: 14px;
+        margin-top: 2.5rem;
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #555;
+      }
+      p { margin-bottom: 1rem; }
+      ul { list-style: none; }
+      li { margin-bottom: 0.75rem; }
+      .project-name {
+        font-weight: bold;
+      }
+      .project-desc {
+        color: #444;
+        margin-top: 0.15rem;
+      }
+      a {
+        color: #1a1a1a;
+        text-decoration: underline;
+        text-decoration-color: #999;
+      }
+      a:hover { text-decoration-color: #1a1a1a; }
+      .links { margin-top: 1rem; }
+      .links a { margin-right: 1.5rem; }
+      .about { margin: 1.5rem 0 2.5rem; color: #333; }
+      .phase-note { color: #777; font-size: 13px; margin-bottom: 0.5rem; }
+    </style>
+  </head>
+  <body>
+    <h1>adjarnor</h1>
+    <p class="about">
+      Systems-focused Python engineer. Interested in backend architecture,
+      simplicity, and reliability. Most of my work has grown out of building
+      things with friends, contributing to open source, and solving real
+      problems at my startup.
+    </p>
+
+    <div class="links">
+      {links.map(l => <a href={l.url}>{l.label}</a>)}
+    </div>
+
+    {Object.entries(projects).map(([phase, items]) => (
+      <>
+        <h2>{phase}</h2>
+        {phase === "early learning" && (
+          <p class="phase-note">Projects from when I was learning how things work.</p>
+        )}
+        {phase === "application building" && (
+          <p class="phase-note">Real problems, straightforward solutions.</p>
+        )}
+        {phase === "research" && (
+          <p class="phase-note">Where Python meets curiosity.</p>
+        )}
+        {phase === "open source" && (
+          <p class="phase-note">Code that other people actually use.</p>
+        )}
+        {phase === "production systems" && (
+          <p class="phase-note">Code running under real constraints.</p>
+        )}
+        <ul>
+          {items.map(p => (
+            <li>
+              <div class="project-name">
+                {p.url ? <a href={p.url}>{p.name}</a> : p.name}
+              </div>
+              <div class="project-desc">{p.description}</div>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
+  </body>
+</html>
